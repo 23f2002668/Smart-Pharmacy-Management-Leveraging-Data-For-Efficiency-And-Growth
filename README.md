@@ -1,9 +1,9 @@
-# **🟢 [Smart Pharmacy Management: Leveraging Data for Efficiency & Growth](https://23f2002668.github.io/Smart-Pharmacy-Management-Leveraging-Data-for-Efficiency-And-Growth/)**
+# **🟢 [Smart Pharmacy Management: Leveraging Data for Efficiency & Growth](https://23f2002668.github.io/Smart-Pharmacy-Management-Leveraging-Data-For-Efficiency-And-Growth/)**
 **Data Analyst : <i>Shahzada Moon<i>**
 
 <br>
 
-**Project Dashboard Link : <i>[Smart Pharmacy Management: Leveraging Data for Efficiency & Growth](https://23f2002668.github.io/Smart-Pharmacy-Management-Leveraging-Data-for-Efficiency-And-Growth/)<i>**
+**Project Dashboard Link : <i>[Smart Pharmacy Management: Leveraging Data for Efficiency & Growth](https://23f2002668.github.io/Smart-Pharmacy-Management-Leveraging-Data-For-Efficiency-And-Growth/)<i>**
 
 <br>
 
