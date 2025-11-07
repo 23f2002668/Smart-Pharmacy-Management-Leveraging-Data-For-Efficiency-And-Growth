@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Accounts | Smart Pharmacy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #Background {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: top;
+            /* background-color: #A3B48C */
+        }
+
+        #Header {
+            width: 100%;
+            height: 10vh;
+            position: fixed;
+            z-index: 1000;
+            background-color: #007bff;
+            border-bottom: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #Logo {
+            color: white;
+            padding: 0rem 0rem 0rem 1rem;
+            font-size: 1.75rem;
+            font-weight: 550;
+            font-family: 'Courier New';
+        }
+
+        #Header-Links {
+            width: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            color: white;
+            font-size: 1.35rem;
+            font-family: 'Courier New';
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            margin-right: 3%;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="Background">
+      <div id="Header">
+          <div id="Logo">
+              Janta Pharmacy Store
+          </div>
+
+          <div id="Header-Links">
+            <a href="dashboard.html"> Dashboard </a>
+            <a href="billing.html"> Billing </a>
+            <a href="accounts.html"> Accounts </a>
+            <a href="stock.html"> Stock </a>
+            <a href="customers.html"> Customers </a>
+            <a href="alerts.html"> Alerts </a>
+          </div>
+      </div>
+      <!-- Accounts Section -->
+      <div style="width: 93%; margin: 12vh 0% 0% 0%;">
+        <h3 class="text-primary">Accounts Summary</h3>
+        <p class="text-muted">Track monthly revenues and profits.</p>
+        <div class="card shadow-sm p-3" style="height: 50vh;">
+          <canvas id="accountsChart" style="width: 50%; height: 45vh; margin: 2.5vh 25% 2.5vh 25%;"></canvas>
+        </div>
+      </div>
+
+      <!-- Accounts History (Revenue table + search) -->
+      <div style="width: 100%; margin: 5vh 0% 0% 0%;">
+          <div class="card shadow-sm p-3 m-5">
+              <h4 class="text-primary mb-3">Medicines Daily Revenue</h4>
+
+              <!-- Search Bar -->
+              <div class="row search-row">
+                  <div class="col-md-8" style="width: 100%;">
+                      <div class="input-group">
+                          <span class="input-group-text bg-primary text-white">🔍</span>
+                          <input type="text" id="searchInput" class="form-control" placeholder="Search date (dd/mm/yyyy or dd-mm-yyyy)">
+                          <button id="clearBtn" class="btn btn-outline-secondary" type="button">Clear</button>
+                      </div>
+                  </div>
+              </div><br>
+
+              <!-- Scrollable Table -->
+              <div style="width: 100%; max-height: 400px; overflow-y: auto; border: 1px solid #dee2e6; border-radius: 5px;">
+                <table class="table table-striped table-bordered table-hover mb-0" id="dataTable">
+                  <thead class="table-primary text-center sticky-top">
+                    <tr>
+                      <th>Date</th>
+                      <th>Total Sales</th>
+                      <th>Total Revenue</th>
+                      <th>Average Price</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-center">
+                    <tr><td>15/05/2025</td><td>64.00</td><td>₹8,962.06</td><td>₹140.03</td></tr>
+                    <tr><td>16/05/2025</td><td>68.00</td><td>₹14,862.81</td><td>₹218.57</td></tr>
+                    <tr><td>17/05/2025</td><td>25.00</td><td>₹6,402.50</td><td>₹256.10</td></tr>
+                    <tr><td>18/05/2025</td><td>68.00</td><td>₹12,165.48</td><td>₹178.90</td></tr>
+                    <tr><td>19/05/2025</td><td>68.00</td><td>₹7,463.32</td><td>₹109.75</td></tr>
+                    <tr><td>20/05/2025</td><td>80.00</td><td>₹9,167.52</td><td>₹114.59</td></tr>
+                    <tr><td>21/05/2025</td><td>73.00</td><td>₹12,088.07</td><td>₹165.59</td></tr>
+                    <tr><td>22/05/2025</td><td>68.00</td><td>₹9,852.15</td><td>₹144.88</td></tr>
+                    <tr><td>23/05/2025</td><td>82.00</td><td>₹16,142.73</td><td>₹196.86</td></tr>
+                    <tr><td>24/05/2025</td><td>91.00</td><td>₹18,262.64</td><td>₹200.69</td></tr>
+                    <tr><td>25/05/2025</td><td>95.00</td><td>₹21,752.45</td><td>₹228.97</td></tr>
+                    <tr><td>26/05/2025</td><td>101.00</td><td>₹23,428.56</td><td>₹231.97</td></tr>
+                    <tr><td>27/05/2025</td><td>94.00</td><td>₹19,874.62</td><td>₹211.43</td></tr>
+                    <tr><td>28/05/2025</td><td>108.00</td><td>₹24,785.23</td><td>₹229.49</td></tr>
+                    <tr><td>29/05/2025</td><td>112.00</td><td>₹25,462.18</td><td>₹227.34</td></tr>
+                    <tr><td>30/05/2025</td><td>118.00</td><td>₹27,438.85</td><td>₹232.54</td></tr>
+                    <tr><td>31/05/2025</td><td>123.00</td><td>₹29,184.63</td><td>₹237.27</td></tr>
+                    <tr><td>01/06/2025</td><td>120.00</td><td>₹28,554.21</td><td>₹238.00</td></tr>
+                    <tr><td>02/06/2025</td><td>126.00</td><td>₹30,264.85</td><td>₹240.20</td></tr>
+                    <tr><td>03/06/2025</td><td>128.00</td><td>₹31,758.44</td><td>₹248.11</td></tr>
+                    <tr><td>04/06/2025</td><td>134.00</td><td>₹32,981.27</td><td>₹246.86</td></tr>
+                    <tr><td>05/06/2025</td><td>139.00</td><td>₹34,756.23</td><td>₹250.38</td></tr>
+                    <tr><td>06/06/2025</td><td>141.00</td><td>₹36,428.51</td><td>₹258.54</td></tr>
+                    <tr><td>07/06/2025</td><td>148.00</td><td>₹38,762.46</td><td>₹261.92</td></tr>
+                    <tr><td>08/06/2025</td><td>152.00</td><td>₹40,552.81</td><td>₹266.78</td></tr>
+                    <tr><td>09/06/2025</td><td>158.00</td><td>₹41,784.64</td><td>₹264.47</td></tr>
+                    <tr><td>10/06/2025</td><td>163.00</td><td>₹43,211.27</td><td>₹265.27</td></tr>
+                    <tr><td>11/06/2025</td><td>167.00</td><td>₹45,684.12</td><td>₹273.49</td></tr>
+                    <tr><td>12/06/2025</td><td>172.00</td><td>₹46,325.67</td><td>₹269.33</td></tr>
+                    <tr><td>13/06/2025</td><td>176.00</td><td>₹47,851.44</td><td>₹271.88</td></tr>
+                    <tr><td>14/06/2025</td><td>180.00</td><td>₹49,512.38</td><td>₹275.07</td></tr>
+                    <tr><td>15/06/2025</td><td>183.00</td><td>₹50,962.45</td><td>₹278.44</td></tr>
+                    <tr><td>16/06/2025</td><td>186.00</td><td>₹52,467.81</td><td>₹281.99</td></tr>
+                    <tr><td>17/06/2025</td><td>190.00</td><td>₹53,742.26</td><td>₹282.86</td></tr>
+                    <tr><td>18/06/2025</td><td>194.00</td><td>₹55,163.51</td><td>₹284.47</td></tr>
+                    <tr><td>19/06/2025</td><td>198.00</td><td>₹56,825.28</td><td>₹287.00</td></tr>
+                    <tr><td>20/06/2025</td><td>201.00</td><td>₹58,275.19</td><td>₹289.93</td></tr>
+                    <tr><td>21/06/2025</td><td>204.00</td><td>₹59,854.61</td><td>₹293.46</td></tr>
+                    <tr><td>22/06/2025</td><td>207.00</td><td>₹61,512.85</td><td>₹297.00</td></tr>
+                    <tr><td>23/06/2025</td><td>210.00</td><td>₹63,182.76</td><td>₹300.87</td></tr>
+                    <tr><td>24/06/2025</td><td>214.00</td><td>₹64,642.84</td><td>₹302.06</td></tr>
+                    <tr><td>25/06/2025</td><td>218.00</td><td>₹66,118.44</td><td>₹303.29</td></tr>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+
+          <div class="card shadow-sm p-3" style="width: 93%; margin: 10vh 3.5% 3vh 3.5%;">
+              <h4 class="text-primary mb-3">Weekly Revenue</h4>
+              <!-- Search Bar -->
+              <div class="row search-row">
+                  <div class="col-md-8" style="width: 100%;">
+                      <div class="input-group">
+                          <span class="input-group-text bg-primary text-white">🔍</span>
+                          <input type="text" id="searchInput" class="form-control" placeholder="Search Week">
+                          <button id="clearBtn" class="btn btn-outline-secondary" type="button">Clear</button>
+                      </div>
+                  </div>
+              </div><br>
+
+              <!-- Scrollable Table -->
+              <div style="width: 100%; max-height: 400px; overflow-y: auto; border: 1px solid #dee2e6; border-radius: 5px;">
+                <table class="table table-striped table-bordered table-hover mb-0" id="dataTable">
+                  <thead class="table-primary text-center sticky-top">
+                    <tr>
+                        <th>Week</th>
+                        <th>Total Revenue</th>
+                        <th>% Contribution in Total Revenue</th>
+                    </tr>
+                  </thead>
+                  <tbody id="revenueTable">
+                    <tr><td>Week-6</td><td>₹ 59,301.55</td><td>14.67%</td></tr>
+                    <tr><td>Week-5</td><td>₹ 58,106.48</td><td>14.37%</td></tr>
+                    <tr><td>Week-4</td><td>₹ 66,098.97</td><td>16.35%</td></tr>
+                    <tr><td>Week-3</td><td>₹ 92,305.36</td><td>22.83%</td></tr>
+                    <tr><td>Week-2</td><td>₹ 57,382.35</td><td>14.19%</td></tr>
+                    <tr><td>Week-1</td><td>₹ 71,111.75</td><td>17.59%</td></tr>
+                  </tbody>
+              </table>
+          </div>
+    </div>
+    <!-- ======= FOOTER ======= -->
+    <footer class="text-center text-white mt-5" style="background-color: #007bff; padding: 20px 0; border-top: 2px solid white;">
+      <div class="container">
+        <h6 style="font-family: 'Courier New'; font-weight: 500;">BDM Project of Pharmacy Store</h6>
+        <p style="margin: 5px 0;">Developed by <strong>Shahzada Moon</strong></p>
+        <p style="font-size: 0.9rem; opacity: 0.85;">© 2025 Janta Pharmacy Store | All Rights Reserved</p>
+      </div>
+    </footer>
+
+    <!-- Sorting + Search Script -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const table = document.getElementById("dataTable");
+      const tbody = table.querySelector("tbody");
+      const rows = Array.from(tbody.querySelectorAll("tr"));
+
+      // Sort dates (latest → oldest)
+      rows.sort((a, b) => {
+        const da = a.children[0].textContent.trim().split("/").reverse().join("");
+        const db = b.children[0].textContent.trim().split("/").reverse().join("");
+        return db.localeCompare(da);
+      });
+      rows.forEach(row => tbody.appendChild(row));
+
+      // Search functionality
+      const searchInput = document.getElementById("searchInput");
+      const clearBtn = document.getElementById("clearBtn");
+
+      searchInput.addEventListener("input", () => {
+        const query = searchInput.value.toLowerCase();
+        rows.forEach(row => {
+          const date = row.children[0].textContent.toLowerCase();
+          row.style.display = date.includes(query) ? "" : "none";
+        });
+      });
+
+      clearBtn.addEventListener("click", () => {
+        searchInput.value = "";
+        rows.forEach(row => (row.style.display = ""));
+      });
+    });
+    </script>
+
+  <script>
+    new Chart(document.getElementById('accountsChart'), {
+      type: 'bar',
+      data: {
+        labels: ["May", "June", "July"],
+        datasets: [
+          { label: "Revenue (₹)", data: [726784, 752110, 769890], backgroundColor: "#007bff" },
+          { label: "Profit (₹)", data: [204000, 218000, 226500], backgroundColor: "#28a745" }
+        ]
+      }
+    });
+  </script>
+
+  <script>
+      document.getElementById('searchInput').addEventListener('keyup', function() {
+          let input = this.value.toLowerCase();
+          let rows = document.querySelectorAll('#revenueTable tr');
+          rows.forEach(row => {
+              let text = row.textContent.toLowerCase();
+              row.style.display = text.includes(input) ? '' : 'none';
+          });
+      });
+  </script>
+</body>
+</html>

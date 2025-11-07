@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Customers — Regular & Occasional</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #Background {
+            width: 100%;
+            min-height: 140vh;
+            display: flex;
+            align-items: space-evenly;
+            flex-direction: column;
+            justify-content: top;
+            /* background-color: #A3B48C */
+        }
+
+        #Header {
+            width: 100%;
+            height: 10vh;
+            position: fixed;
+            z-index: 1000;
+            background-color: #007bff;
+            border-bottom: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #Logo {
+            color: white;
+            padding: 0rem 0rem 0rem 1rem;
+            font-size: 1.75rem;
+            font-weight: 550;
+            font-family: 'Courier New';
+        }
+
+        #Header-Links {
+            width: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            color: white;
+            font-size: 1.35rem;
+            font-family: 'Courier New';
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            margin-right: 3%;
+
+        }
+  body { background:#f8f9fa; }
+  table { border-collapse: collapse; }
+  thead th { position: sticky; top: 0; z-index: 3; }
+  .table-container { border: 1px solid #dee2e6; border-radius: 8px; overflow-y: auto; background:#fff; }
+  .table-container { max-height: 40vh; }
+  .card { border-radius: 10px; }
+  .counts { font-size:.9rem; color:#495057; }
+  .search-row { gap:.5rem; }
+  .fixed-header-space { height: 7.5rem; } /* reserve space for fixed header if needed */
+  .text-center-small { font-size: .95rem; }
+</style>
+</head>
+<body>
+<div id="Background">
+    <div id="Header">
+        <div id="Logo">
+            Janta Pharmacy Store
+        </div>
+
+        <div id="Header-Links">
+            <a href="dashboard.html"> Dashboard </a>
+            <a href="billing.html"> Billing </a>
+            <a href="accounts.html"> Accounts </a>
+            <a href="stock.html"> Stock </a>
+            <a href="customers.html"> Customers </a>
+            <a href="alerts.html"> Alerts </a>
+
+        </div>
+    </div>
+    <div class="container-fluid" style="width: 95%; height: 80vh; margin-top: 15vh;">
+      <h3 class="text-center text-primary mb-3">📋 Customers Visits Analysis</h3><br>
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div>
+              <h5 class="mb-0 text-success">Regular Customers</h5>
+              <div id="regularCount" class="counts mt-1">Total: 128</div>
+            </div>
+            <div class="d-flex align-items-center search-row">
+              <input id="regularSearch" type="search" class="form-control form-control-sm" placeholder="Search regular customers (name / email / visits)">
+              <button id="regularClear" class="btn btn-sm btn-outline-secondary">Clear</button>
+            </div>
+          </div>
+          <div class="table-container">
+            <table class="table table-sm table-hover mb-0" id="regularTable">
+              <thead class="table-light">
+                <tr>
+                  <th style="min-width:36px">#</th>
+                  <th>Unique Customers</th>
+                  <th>Emails</th>
+                  <th style="width:160px" class="text-center">Total Visits in 6 Weeks</th>
+                  <th style="width:160px" class="text-center">Customers Category</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>Prisha Naik</td><td>prisha.naik@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>2</td><td>Kabir Chatterjee</td><td>kabir.chatterjee@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>3</td><td>Shruti Menon</td><td>shruti.menon@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>4</td><td>Arjun Sharma</td><td>arjun.sharma@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>5</td><td>Anay Nair</td><td>anay.nair@example.com</td><td class='text-center'>6</td><td class='text-center'>Regular</td></tr>
+                <tr><td>6</td><td>Rohan Lal</td><td>rohan.lal@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>7</td><td>Pari Thakur</td><td>pari.thakur@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>8</td><td>Aadhya Kumar</td><td>aadhya.kumar@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>9</td><td>Dhruv Banerjee</td><td>dhruv.banerjee@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>10</td><td>Om Rana</td><td>om.rana@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>11</td><td>Navya Patel</td><td>navya.patel@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>12</td><td>Aisha Bhattacharya</td><td>aisha.bhattacharya@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>13</td><td>Aisha Kapoor</td><td>aisha.kapoor@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>14</td><td>Nisha Kapoor</td><td>nisha.kapoor@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>15</td><td>Mahi Kumar</td><td>mahi.kumar@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>16</td><td>Prisha Joshi</td><td>prisha.joshi@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>17</td><td>Kabir Thakur</td><td>kabir.thakur@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>18</td><td>Prisha Mishra</td><td>prisha.mishra@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>19</td><td>Ayaan Pathak</td><td>ayaan.pathak@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>20</td><td>Navya Pandey</td><td>navya.pandey@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>21</td><td>Shruti Joshi</td><td>shruti.joshi@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>22</td><td>Rudra Goswami</td><td>rudra.goswami@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>23</td><td>Kabir Banerjee</td><td>kabir.banerjee@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>24</td><td>Aaradhya Nair</td><td>aaradhya.nair@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>25</td><td>Saanvi Mishra</td><td>saanvi.mishra@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>26</td><td>Vivaan Mishra</td><td>vivaan.mishra@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>27</td><td>Anaya Pathak</td><td>anaya.pathak@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>28</td><td>Reyansh Kulkarni</td><td>reyansh.kulkarni@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>29</td><td>Isha Nair</td><td>isha.nair@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>30</td><td>Atharv Yadav</td><td>atharv.yadav@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>31</td><td>Arjun Verma</td><td>arjun.verma@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>32</td><td>Anaya Mahajan</td><td>anaya.mahajan@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>33</td><td>Aaradhya Menon</td><td>aaradhya.menon@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>34</td><td>Ayaan Agarwal</td><td>ayaan.agarwal@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>35</td><td>Anvi Nair</td><td>anvi.nair@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>36</td><td>Atharv Nair</td><td>atharv.nair@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>37</td><td>Ishaan Pandey</td><td>ishaan.pandey@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>38</td><td>Isha Malhotra</td><td>isha.malhotra@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>39</td><td>Anvi Sinha</td><td>anvi.sinha@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>40</td><td>Anvi Kumar</td><td>anvi.kumar@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>41</td><td>Anika Tiwari</td><td>anika.tiwari@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>42</td><td>Atharv Tiwari</td><td>atharv.tiwari@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>43</td><td>Ishaan Reddy</td><td>ishaan.reddy@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>44</td><td>Vivaan Mahajan</td><td>vivaan.mahajan@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>45</td><td>Sai Joshi</td><td>sai.joshi@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>46</td><td>Rudra Pathak</td><td>rudra.pathak@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>47</td><td>Aadhya Rao</td><td>aadhya.rao@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>48</td><td>Rohan Kapoor</td><td>rohan.kapoor@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>49</td><td>Diya Gupta</td><td>diya.gupta@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>50</td><td>Prisha Malhotra</td><td>prisha.malhotra@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>51</td><td>Kian Kohli</td><td>kian.kohli@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>52</td><td>Prisha Lal</td><td>prisha.lal@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>53</td><td>Ridhi Tiwari</td><td>ridhi.tiwari@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>54</td><td>Ishaan Gupta</td><td>ishaan.gupta@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>55</td><td>Krishna Thakur</td><td>krishna.thakur@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>56</td><td>Tara Nair</td><td>tara.nair@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>57</td><td>Navya Saxena</td><td>navya.saxena@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>58</td><td>Vihaan Pandey</td><td>vihaan.pandey@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>59</td><td>Tara Verma</td><td>tara.verma@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>60</td><td>Aadhya Verma</td><td>aadhya.verma@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>61</td><td>Riya Reddy</td><td>riya.reddy@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>62</td><td>Ira Rao</td><td>ira.rao@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>63</td><td>Krishna Reddy</td><td>krishna.reddy@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>64</td><td>Myra Sinha</td><td>myra.sinha@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>65</td><td>Nisha Yadav</td><td>nisha.yadav@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>66</td><td>Vihaan Rao</td><td>vihaan.rao@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>67</td><td>Saanvi Patel</td><td>saanvi.patel@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>68</td><td>Saanvi Menon</td><td>saanvi.menon@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>69</td><td>Anika Kohli</td><td>anika.kohli@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>70</td><td>Vihaan Bhat</td><td>vihaan.bhat@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>71</td><td>Kabir Kulkarni</td><td>kabir.kulkarni@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>72</td><td>Dhruv Mehta</td><td>dhruv.mehta@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>73</td><td>Aarohi Menon</td><td>aarohi.menon@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>74</td><td>Aadhya Kapoor</td><td>aadhya.kapoor@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>75</td><td>Vivaan Yadav</td><td>vivaan.yadav@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>76</td><td>Saanvi Joshi</td><td>saanvi.joshi@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>77</td><td>Navya Verma</td><td>navya.verma@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>78</td><td>Aaradhya Sinha</td><td>aaradhya.sinha@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>79</td><td>Vivaan Sharma</td><td>vivaan.sharma@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>80</td><td>Arjun Deshmukh</td><td>arjun.deshmukh@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>81</td><td>Navya Gupta</td><td>navya.gupta@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>82</td><td>Aisha Menon</td><td>aisha.menon@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>83</td><td>Nisha Agarwal</td><td>nisha.agarwal@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>84</td><td>Aarohi Mahajan</td><td>aarohi.mahajan@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>85</td><td>Ayaan Bose</td><td>ayaan.bose@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>86</td><td>Meera Mahajan</td><td>meera.mahajan@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>87</td><td>Ishita Malhotra</td><td>ishita.malhotra@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>88</td><td>Tara Reddy</td><td>tara.reddy@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>89</td><td>Charvi Rao</td><td>charvi.rao@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>90</td><td>Kian Lal</td><td>kian.lal@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>91</td><td>Ridhi Saxena</td><td>ridhi.saxena@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>92</td><td>Ishaan Chopra</td><td>ishaan.chopra@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>93</td><td>Rohan Reddy</td><td>rohan.reddy@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>94</td><td>Nisha Thakur</td><td>nisha.thakur@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>95</td><td>Dhruv Kohli</td><td>dhruv.kohli@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>96</td><td>Ridhi Pathak</td><td>ridhi.pathak@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>97</td><td>Anika Thakur</td><td>anika.thakur@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>98</td><td>Mahi Patel</td><td>mahi.patel@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>99</td><td>Shruti Sharma</td><td>shruti.sharma@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>100</td><td>Vivaan Pandey</td><td>vivaan.pandey@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>101</td><td>Amaya Das</td><td>amaya.das@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>102</td><td>Aditya Chatterjee</td><td>aditya.chatterjee@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>103</td><td>Vivaan Gupta</td><td>vivaan.gupta@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>104</td><td>Ira Iyer</td><td>ira.iyer@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>105</td><td>Shivansh Joshi</td><td>shivansh.joshi@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>106</td><td>Anvi Mishra</td><td>anvi.mishra@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>107</td><td>Rohan Gupta</td><td>rohan.gupta@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>108</td><td>Navya Sharma</td><td>navya.sharma@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>109</td><td>Ridhi Chopra</td><td>ridhi.chopra@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>110</td><td>Kiara Gupta</td><td>kiara.gupta@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>111</td><td>Diya Agarwal</td><td>diya.agarwal@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>112</td><td>Rudra Chopra</td><td>rudra.chopra@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>113</td><td>Ridhi Joshi</td><td>ridhi.joshi@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>114</td><td>Shivansh Saxena</td><td>shivansh.saxena@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>115</td><td>Ishita Bhattacharya</td><td>ishita.bhattacharya@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>116</td><td>Aaradhya Tiwari</td><td>aaradhya.tiwari@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>117</td><td>Amaya Yadav</td><td>amaya.yadav@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>118</td><td>Krishna Singh</td><td>krishna.singh@example.com</td><td class='text-center'>5</td><td class='text-center'>Regular</td></tr>
+                <tr><td>119</td><td>Pari Chopra</td><td>pari.chopra@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>120</td><td>Ayaan Pandey</td><td>ayaan.pandey@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>121</td><td>Rudra Yadav</td><td>rudra.yadav@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>122</td><td>Kavya Nair</td><td>kavya.nair@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>123</td><td>Ridhi Nair</td><td>ridhi.nair@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>124</td><td>Anika Pathak</td><td>anika.pathak@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>125</td><td>Rudra Kohli</td><td>rudra.kohli@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>126</td><td>Aadhya Lal</td><td>aadhya.lal@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>127</td><td>Aarav Rao</td><td>aarav.rao@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+                <tr><td>128</td><td>Reyansh Nair</td><td>reyansh.nair@example.com</td><td class='text-center'>4</td><td class='text-center'>Regular</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+        <div style="margin-top: 5vh;"> &nbsp; </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div>
+              <h5 class="mb-0 text-warning">Occasional Customers</h5>
+              <div id="occasionalCount" class="counts mt-1">Total: 483</div>
+            </div>
+            <div class="d-flex align-items-center search-row">
+              <input id="occasionalSearch" type="search" class="form-control form-control-sm" placeholder="Search occasional customers (name / email / visits)">
+              <button id="occasionalClear" class="btn btn-sm btn-outline-secondary">Clear</button>
+            </div>
+          </div>
+          <div class="table-container">
+            <table class="table table-sm table-hover mb-0" id="occasionalTable">
+              <thead class="table-light">
+                <tr>
+                  <th style="min-width:36px">#</th>
+                  <th>Unique Customers</th>
+                  <th>Emails</th>
+                  <th style="width:160px" class="text-center">Total Visits in 6 Weeks</th>
+                  <th style="width:160px" class="text-center">Customers Category</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>Mahi Nair</td><td>mahi.nair@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>2</td><td>Ishaan Singh</td><td>ishaan.singh@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>3</td><td>Aarohi Iyer</td><td>aarohi.iyer@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>4</td><td>Riya Nair</td><td>riya.nair@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>5</td><td>Charvi Bose</td><td>charvi.bose@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>6</td><td>Advika Das</td><td>advika.das@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>7</td><td>Anay Mahajan</td><td>anay.mahajan@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>8</td><td>Anika Patel</td><td>anika.patel@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>9</td><td>Sai Nair</td><td>sai.nair@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>10</td><td>Krishna Bhat</td><td>krishna.bhat@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>11</td><td>Myra Mahajan</td><td>myra.mahajan@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>12</td><td>Ayaan Patel</td><td>ayaan.patel@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>13</td><td>Diya Pathak</td><td>diya.pathak@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>14</td><td>Arjun Thakur</td><td>arjun.thakur@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>15</td><td>Isha Yadav</td><td>isha.yadav@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>16</td><td>Vivaan Pathak</td><td>vivaan.pathak@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>17</td><td>Anvi Gupta</td><td>anvi.gupta@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>18</td><td>Nisha Nair</td><td>nisha.nair@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>19</td><td>Tejas Saxena</td><td>tejas.saxena@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>20</td><td>Anika Saxena</td><td>anika.saxena@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>21</td><td>Shruti Bose</td><td>shruti.bose@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>22</td><td>Tara Kulkarni</td><td>tara.kulkarni@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>23</td><td>Aarohi Tiwari</td><td>aarohi.tiwari@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>24</td><td>Kiara Agarwal</td><td>kiara.agarwal@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>25</td><td>Isha Tiwari</td><td>isha.tiwari@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>26</td><td>Tejas Bhat</td><td>tejas.bhat@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>27</td><td>Prisha Kapoor</td><td>prisha.kapoor@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>28</td><td>Arjun Chatterjee</td><td>arjun.chatterjee@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>29</td><td>Kiara Yadav</td><td>kiara.yadav@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>30</td><td>Atharv Rao</td><td>atharv.rao@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>31</td><td>Ayaan Nair</td><td>ayaan.nair@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>32</td><td>Mahi Rao</td><td>mahi.rao@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>33</td><td>Atharv Pillai</td><td>atharv.pillai@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>34</td><td>Ridhi Iyer</td><td>ridhi.iyer@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>35</td><td>Arjun Mishra</td><td>arjun.mishra@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>36</td><td>Tara Naik</td><td>tara.naik@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>37</td><td>Ishita Verma</td><td>ishita.verma@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>38</td><td>Arjun Mahajan</td><td>arjun.mahajan@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>39</td><td>Isha Deshmukh</td><td>isha.deshmukh@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>40</td><td>Anay Sharma</td><td>anay.sharma@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>41</td><td>Riya Kohli</td><td>riya.kohli@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>42</td><td>Anaya Sinha</td><td>anaya.sinha@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>43</td><td>Rudra Menon</td><td>rudra.menon@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>44</td><td>Myra Kumar</td><td>myra.kumar@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>45</td><td>Diya Rao</td><td>diya.rao@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>46</td><td>Aadhya Joshi</td><td>aadhya.joshi@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>47</td><td>Meera Mishra</td><td>meera.mishra@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>48</td><td>Anvi Pillai</td><td>anvi.pillai@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>49</td><td>Aditya Kulkarni</td><td>aditya.kulkarni@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>50</td><td>Aarav Kapoor</td><td>aarav.kapoor@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>51</td><td>Aisha Pathak</td><td>aisha.pathak@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>52</td><td>Reyansh Sinha</td><td>reyansh.sinha@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>53</td><td>Myra Kulkarni</td><td>myra.kulkarni@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>54</td><td>Rohan Das</td><td>rohan.das@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>55</td><td>Navya Pillai</td><td>navya.pillai@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>56</td><td>Aarohi Lal</td><td>aarohi.lal@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>57</td><td>Riya Thakur</td><td>riya.thakur@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>58</td><td>Isha Patel</td><td>isha.patel@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>59</td><td>Diya Rana</td><td>diya.rana@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>60</td><td>Arjun Bose</td><td>arjun.bose@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>61</td><td>Tara Sinha</td><td>tara.sinha@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>62</td><td>Ishita Bhat</td><td>ishita.bhat@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>63</td><td>Myra Pillai</td><td>myra.pillai@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>64</td><td>Mahi Iyer</td><td>mahi.iyer@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>65</td><td>Anvi Chopra</td><td>anvi.chopra@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>66</td><td>Ayaan Verma</td><td>ayaan.verma@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>67</td><td>Ridhi Rao</td><td>ridhi.rao@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>68</td><td>Shruti Kohli</td><td>shruti.kohli@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>69</td><td>Rudra Kapoor</td><td>rudra.kapoor@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>70</td><td>Ridhi Bhattacharya</td><td>ridhi.bhattacharya@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>71</td><td>Kiara Malhotra</td><td>kiara.malhotra@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>72</td><td>Aanya Pandey</td><td>aanya.pandey@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>73</td><td>Aisha Mahajan</td><td>aisha.mahajan@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>74</td><td>Ishaan Naik</td><td>ishaan.naik@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>75</td><td>Aaradhya Chatterjee</td><td>aaradhya.chatterjee@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>76</td><td>Meera Joshi</td><td>meera.joshi@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>77</td><td>Aarohi Banerjee</td><td>aarohi.banerjee@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>78</td><td>Aisha Bose</td><td>aisha.bose@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>79</td><td>Aaradhya Mehta</td><td>aaradhya.mehta@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>80</td><td>Myra Yadav</td><td>myra.yadav@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>81</td><td>Aanya Gupta</td><td>aanya.gupta@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>82</td><td>Atharv Saxena</td><td>atharv.saxena@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>83</td><td>Shivansh Chatterjee</td><td>shivansh.chatterjee@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>84</td><td>Rohan Patel</td><td>rohan.patel@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>85</td><td>Rohan Kumar</td><td>rohan.kumar@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>86</td><td>Anika Deshmukh</td><td>anika.deshmukh@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>87</td><td>Aarav Iyer</td><td>aarav.iyer@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>88</td><td>Saanvi Saxena</td><td>saanvi.saxena@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>89</td><td>Pari Pandey</td><td>pari.pandey@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>90</td><td>Pari Nair</td><td>pari.nair@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>91</td><td>Aarohi Yadav</td><td>aarohi.yadav@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>92</td><td>Dhruv Pathak</td><td>dhruv.pathak@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>93</td><td>Aisha Reddy</td><td>aisha.reddy@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>94</td><td>Riya Pandey</td><td>riya.pandey@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>95</td><td>Shivansh Malhotra</td><td>shivansh.malhotra@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>96</td><td>Ira Deshmukh</td><td>ira.deshmukh@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>97</td><td>Ishaan Tiwari</td><td>ishaan.tiwari@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>98</td><td>Shruti Yadav</td><td>shruti.yadav@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>99</td><td>Kiara Bhat</td><td>kiara.bhat@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>100</td><td>Vihaan Pillai</td><td>vihaan.pillai@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>101</td><td>Mahi Pathak</td><td>mahi.pathak@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>102</td><td>Shruti Naik</td><td>shruti.naik@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>103</td><td>Rohan Thakur</td><td>rohan.thakur@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>104</td><td>Aadhya Bhat</td><td>aadhya.bhat@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>105</td><td>Anvi Iyer</td><td>anvi.iyer@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>106</td><td>Vivaan Thakur</td><td>vivaan.thakur@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>107</td><td>Shivansh Bhat</td><td>shivansh.bhat@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>108</td><td>Rudra Bose</td><td>rudra.bose@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>109</td><td>Anay Yadav</td><td>anay.yadav@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>110</td><td>Charvi Iyer</td><td>charvi.iyer@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>111</td><td>Krishna Das</td><td>krishna.das@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>112</td><td>Amaya Joshi</td><td>amaya.joshi@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>113</td><td>Anika Chatterjee</td><td>anika.chatterjee@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>114</td><td>Anaya Kumar</td><td>anaya.kumar@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>115</td><td>Myra Patel</td><td>myra.patel@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>116</td><td>Anvi Malhotra</td><td>anvi.malhotra@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>117</td><td>Kabir Verma</td><td>kabir.verma@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>118</td><td>Ayaan Sinha</td><td>ayaan.sinha@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>119</td><td>Aarav Das</td><td>aarav.das@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>120</td><td>Om Chatterjee</td><td>om.chatterjee@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>121</td><td>Aaradhya Kulkarni</td><td>aaradhya.kulkarni@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>122</td><td>Aisha Lal</td><td>aisha.lal@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>123</td><td>Kabir Menon</td><td>kabir.menon@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>124</td><td>Atharv Deshmukh</td><td>atharv.deshmukh@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>125</td><td>Reyansh Bhattacharya</td><td>reyansh.bhattacharya@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>126</td><td>Krishna Mishra</td><td>krishna.mishra@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>127</td><td>Kavya Deshmukh</td><td>kavya.deshmukh@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>128</td><td>Pari Chatterjee</td><td>pari.chatterjee@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>129</td><td>Tejas Sharma</td><td>tejas.sharma@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>130</td><td>Riya Bose</td><td>riya.bose@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>131</td><td>Arjun Gupta</td><td>arjun.gupta@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>132</td><td>Om Gupta</td><td>om.gupta@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>133</td><td>Krishna Goswami</td><td>krishna.goswami@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>134</td><td>Nisha Chatterjee</td><td>nisha.chatterjee@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>135</td><td>Riya Pathak</td><td>riya.pathak@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>136</td><td>Ridhi Kohli</td><td>ridhi.kohli@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>137</td><td>Amaya Mehta</td><td>amaya.mehta@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>138</td><td>Ishaan Mehta</td><td>ishaan.mehta@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>139</td><td>Prisha Singh</td><td>prisha.singh@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>140</td><td>Aadhya Banerjee</td><td>aadhya.banerjee@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>141</td><td>Isha Pandey</td><td>isha.pandey@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>142</td><td>Shivansh Kulkarni</td><td>shivansh.kulkarni@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>143</td><td>Vivaan Pillai</td><td>vivaan.pillai@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>144</td><td>Kavya Banerjee</td><td>kavya.banerjee@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>145</td><td>Aisha Patel</td><td>aisha.patel@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>146</td><td>Ayaan Banerjee</td><td>ayaan.banerjee@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>147</td><td>Kian Pandey</td><td>kian.pandey@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>148</td><td>Ira Kapoor</td><td>ira.kapoor@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>149</td><td>Kiara Joshi</td><td>kiara.joshi@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>150</td><td>Diya Thakur</td><td>diya.thakur@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>151</td><td>Ridhi Das</td><td>ridhi.das@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>152</td><td>Navya Lal</td><td>navya.lal@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>153</td><td>Rohan Malhotra</td><td>rohan.malhotra@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>154</td><td>Diya Singh</td><td>diya.singh@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>155</td><td>Atharv Gupta</td><td>atharv.gupta@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>156</td><td>Atharv Agarwal</td><td>atharv.agarwal@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>157</td><td>Vivaan Tiwari</td><td>vivaan.tiwari@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>158</td><td>Aadhya Sinha</td><td>aadhya.sinha@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>159</td><td>Rudra Bhattacharya</td><td>rudra.bhattacharya@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>160</td><td>Charvi Gupta</td><td>charvi.gupta@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>161</td><td>Charvi Kapoor</td><td>charvi.kapoor@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>162</td><td>Sai Mishra</td><td>sai.mishra@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>163</td><td>Tejas Yadav</td><td>tejas.yadav@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>164</td><td>Ira Mahajan</td><td>ira.mahajan@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>165</td><td>Anay Chopra</td><td>anay.chopra@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>166</td><td>Prisha Kulkarni</td><td>prisha.kulkarni@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>167</td><td>Om Naik</td><td>om.naik@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>168</td><td>Charvi Pillai</td><td>charvi.pillai@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>169</td><td>Aadhya Chopra</td><td>aadhya.chopra@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>170</td><td>Shruti Bhat</td><td>shruti.bhat@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>171</td><td>Ira Singh</td><td>ira.singh@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>172</td><td>Dhruv Mishra</td><td>dhruv.mishra@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>173</td><td>Kavya Joshi</td><td>kavya.joshi@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>174</td><td>Prisha Reddy</td><td>prisha.reddy@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>175</td><td>Ridhi Malhotra</td><td>ridhi.malhotra@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>176</td><td>Vivaan Joshi</td><td>vivaan.joshi@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>177</td><td>Shivansh Yadav</td><td>shivansh.yadav@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>178</td><td>Vihaan Gupta</td><td>vihaan.gupta@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>179</td><td>Shruti Singh</td><td>shruti.singh@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>180</td><td>Rudra Iyer</td><td>rudra.iyer@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>181</td><td>Meera Patel</td><td>meera.patel@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>182</td><td>Aadhya Singh</td><td>aadhya.singh@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>183</td><td>Aditya Nair</td><td>aditya.nair@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>184</td><td>Ishita Iyer</td><td>ishita.iyer@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>185</td><td>Anaya Reddy</td><td>anaya.reddy@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>186</td><td>Simran Bhat</td><td>simran.bhat@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>187</td><td>Mahi Menon</td><td>mahi.menon@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>188</td><td>Kian Singh</td><td>kian.singh@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>189</td><td>Aadhya Sharma</td><td>aadhya.sharma@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>190</td><td>Saanvi Kumar</td><td>saanvi.kumar@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>191</td><td>Anaya Banerjee</td><td>anaya.banerjee@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>192</td><td>Aisha Sinha</td><td>aisha.sinha@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>193</td><td>Ira Pillai</td><td>ira.pillai@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>194</td><td>Kabir Kohli</td><td>kabir.kohli@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>195</td><td>Arjun Bhat</td><td>arjun.bhat@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>196</td><td>Kian Reddy</td><td>kian.reddy@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>197</td><td>Myra Singh</td><td>myra.singh@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>198</td><td>Shruti Kapoor</td><td>shruti.kapoor@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>199</td><td>Nisha Naik</td><td>nisha.naik@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>200</td><td>Mahi Gupta</td><td>mahi.gupta@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>201</td><td>Vihaan Goswami</td><td>vihaan.goswami@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>202</td><td>Isha Reddy</td><td>isha.reddy@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>203</td><td>Aaradhya Chopra</td><td>aaradhya.chopra@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>204</td><td>Krishna Naik</td><td>krishna.naik@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>205</td><td>Reyansh Mehta</td><td>reyansh.mehta@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>206</td><td>Aaradhya Bose</td><td>aaradhya.bose@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>207</td><td>Aaradhya Iyer</td><td>aaradhya.iyer@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>208</td><td>Atharv Mishra</td><td>atharv.mishra@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>209</td><td>Meera Pandey</td><td>meera.pandey@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>210</td><td>Anaya Gupta</td><td>anaya.gupta@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>211</td><td>Anvi Naik</td><td>anvi.naik@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>212</td><td>Kavya Pillai</td><td>kavya.pillai@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>213</td><td>Tejas Banerjee</td><td>tejas.banerjee@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>214</td><td>Simran Gupta</td><td>simran.gupta@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>215</td><td>Dhruv Kapoor</td><td>dhruv.kapoor@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>216</td><td>Shivansh Reddy</td><td>shivansh.reddy@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>217</td><td>Atharv Lal</td><td>atharv.lal@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>218</td><td>Mahi Pillai</td><td>mahi.pillai@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>219</td><td>Aarohi Das</td><td>aarohi.das@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>220</td><td>Ira Reddy</td><td>ira.reddy@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>221</td><td>Aarav Nair</td><td>aarav.nair@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>222</td><td>Aaradhya Pathak</td><td>aaradhya.pathak@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>223</td><td>Vihaan Joshi</td><td>vihaan.joshi@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>224</td><td>Shivansh Lal</td><td>shivansh.lal@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>225</td><td>Ridhi Sharma</td><td>ridhi.sharma@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>226</td><td>Simran Kapoor</td><td>simran.kapoor@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>227</td><td>Prisha Banerjee</td><td>prisha.banerjee@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>228</td><td>Shivansh Pathak</td><td>shivansh.pathak@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>229</td><td>Ayaan Chopra</td><td>ayaan.chopra@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>230</td><td>Charvi Saxena</td><td>charvi.saxena@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>231</td><td>Arjun Kumar</td><td>arjun.kumar@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>232</td><td>Shruti Verma</td><td>shruti.verma@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>233</td><td>Tejas Verma</td><td>tejas.verma@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>234</td><td>Aarav Saxena</td><td>aarav.saxena@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>235</td><td>Ridhi Mahajan</td><td>ridhi.mahajan@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>236</td><td>Kian Gupta</td><td>kian.gupta@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>237</td><td>Meera Bhattacharya</td><td>meera.bhattacharya@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>238</td><td>Atharv Bhat</td><td>atharv.bhat@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>239</td><td>Rudra Pandey</td><td>rudra.pandey@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>240</td><td>Vihaan Kohli</td><td>vihaan.kohli@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>241</td><td>Anvi Verma</td><td>anvi.verma@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>242</td><td>Aadhya Naik</td><td>aadhya.naik@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>243</td><td>Prisha Kumar</td><td>prisha.kumar@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>244</td><td>Om Iyer</td><td>om.iyer@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>245</td><td>Rudra Lal</td><td>rudra.lal@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>246</td><td>Dhruv Verma</td><td>dhruv.verma@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>247</td><td>Ira Mehta</td><td>ira.mehta@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>248</td><td>Prisha Agarwal</td><td>prisha.agarwal@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>249</td><td>Rudra Rao</td><td>rudra.rao@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>250</td><td>Isha Goswami</td><td>isha.goswami@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>251</td><td>Atharv Pandey</td><td>atharv.pandey@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>252</td><td>Tara Tiwari</td><td>tara.tiwari@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>253</td><td>Charvi Deshmukh</td><td>charvi.deshmukh@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>254</td><td>Aadhya Tiwari</td><td>aadhya.tiwari@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>255</td><td>Kian Agarwal</td><td>kian.agarwal@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>256</td><td>Reyansh Patel</td><td>reyansh.patel@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>257</td><td>Charvi Sharma</td><td>charvi.sharma@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>258</td><td>Aaradhya Pillai</td><td>aaradhya.pillai@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>259</td><td>Reyansh Pathak</td><td>reyansh.pathak@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>260</td><td>Ishaan Rao</td><td>ishaan.rao@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>261</td><td>Dhruv Iyer</td><td>dhruv.iyer@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>262</td><td>Meera Saxena</td><td>meera.saxena@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>263</td><td>Pari Kumar</td><td>pari.kumar@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>264</td><td>Krishna Patel</td><td>krishna.patel@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>265</td><td>Ira Goswami</td><td>ira.goswami@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>266</td><td>Meera Malhotra</td><td>meera.malhotra@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>267</td><td>Anika Bhattacharya</td><td>anika.bhattacharya@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>268</td><td>Ishita Singh</td><td>ishita.singh@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>269</td><td>Simran Tiwari</td><td>simran.tiwari@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>270</td><td>Kiara Sharma</td><td>kiara.sharma@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>271</td><td>Mahi Deshmukh</td><td>mahi.deshmukh@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>272</td><td>Reyansh Rana</td><td>reyansh.rana@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>273</td><td>Diya Kohli</td><td>diya.kohli@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>274</td><td>Charvi Verma</td><td>charvi.verma@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>275</td><td>Nisha Menon</td><td>nisha.menon@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>276</td><td>Aarohi Deshmukh</td><td>aarohi.deshmukh@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>277</td><td>Simran Verma</td><td>simran.verma@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>278</td><td>Anvi Deshmukh</td><td>anvi.deshmukh@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>279</td><td>Tejas Kohli</td><td>tejas.kohli@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>280</td><td>Ridhi Yadav</td><td>ridhi.yadav@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>281</td><td>Ishita Bose</td><td>ishita.bose@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>282</td><td>Prisha Thakur</td><td>prisha.thakur@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>283</td><td>Myra Bose</td><td>myra.bose@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>284</td><td>Anaya Iyer</td><td>anaya.iyer@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>285</td><td>Diya Sharma</td><td>diya.sharma@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>286</td><td>Kiara Pandey</td><td>kiara.pandey@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>287</td><td>Aditya Tiwari</td><td>aditya.tiwari@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>288</td><td>Kavya Chopra</td><td>kavya.chopra@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>289</td><td>Ishaan Agarwal</td><td>ishaan.agarwal@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>290</td><td>Advika Joshi</td><td>advika.joshi@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>291</td><td>Mahi Bose</td><td>mahi.bose@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>292</td><td>Nisha Singh</td><td>nisha.singh@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>293</td><td>Navya Bhattacharya</td><td>navya.bhattacharya@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>294</td><td>Aisha Joshi</td><td>aisha.joshi@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>295</td><td>Dhruv Deshmukh</td><td>dhruv.deshmukh@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>296</td><td>Aadhya Malhotra</td><td>aadhya.malhotra@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>297</td><td>Riya Rao</td><td>riya.rao@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>298</td><td>Riya Mishra</td><td>riya.mishra@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>299</td><td>Aarav Singh</td><td>aarav.singh@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>300</td><td>Kiara Kulkarni</td><td>kiara.kulkarni@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>301</td><td>Kabir Singh</td><td>kabir.singh@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>302</td><td>Krishna Malhotra</td><td>krishna.malhotra@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>303</td><td>Advika Agarwal</td><td>advika.agarwal@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>304</td><td>Ira Verma</td><td>ira.verma@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>305</td><td>Kabir Mahajan</td><td>kabir.mahajan@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>306</td><td>Aditya Reddy</td><td>aditya.reddy@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>307</td><td>Meera Pillai</td><td>meera.pillai@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>308</td><td>Mahi Singh</td><td>mahi.singh@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>309</td><td>Prisha Bhat</td><td>prisha.bhat@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>310</td><td>Krishna Pandey</td><td>krishna.pandey@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>311</td><td>Ayaan Gupta</td><td>ayaan.gupta@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>312</td><td>Aisha Malhotra</td><td>aisha.malhotra@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>313</td><td>Ira Lal</td><td>ira.lal@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>314</td><td>Mahi Mahajan</td><td>mahi.mahajan@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>315</td><td>Kiara Banerjee</td><td>kiara.banerjee@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>316</td><td>Amaya Rao</td><td>amaya.rao@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>317</td><td>Aarav Bhat</td><td>aarav.bhat@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>318</td><td>Om Bhattacharya</td><td>om.bhattacharya@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>319</td><td>Aanya Nair</td><td>aanya.nair@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>320</td><td>Anika Pandey</td><td>anika.pandey@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>321</td><td>Aarav Sinha</td><td>aarav.sinha@example.com</td><td class='text-center'>1</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>322</td><td>Tara Mishra</td><td>tara.mishra@example.com</td><td class='text-center'>3</td><td class='text-center'>Occasional</td></tr>
+                <tr><td>323</td><td>Anaya Rao</td><td>anaya.rao@example.com</td><td class='text-center'>2</td><td class='text-center'>Occasional</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- ======= FOOTER ======= -->
+<footer class="text-center text-white" style="width: 100%; background-color: #007bff; padding: 20px 0; border-top: 2px solid white;">
+  <div class="container">
+    <h6 style="font-family: 'Courier New'; font-weight: 500;">BDM Project of Pharmacy Store</h6>
+    <p style="margin: 5px 0;">Developed by <strong>Shahzada Moon</strong></p>
+    <p style="font-size: 0.9rem; opacity: 0.85;">© 2025 Janta Pharmacy Store | All Rights Reserved</p>
+  </div>
+</footer>
+
+<script>
+function setupSearch(inputId, tableId, clearId) {
+  const input = document.getElementById(inputId);
+  const table = document.getElementById(tableId);
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    const rows = table.tBodies[0].rows;
+    for (let i=0;i<rows.length;i++) {
+      const txt = rows[i].textContent.toLowerCase();
+      rows[i].style.display = txt.includes(q) ? '' : 'none';
+    }
+  });
+  document.getElementById(clearId).addEventListener('click', () => {
+    input.value = '';
+    const rows = table.tBodies[0].rows;
+    for (let i=0;i<rows.length;i++) rows[i].style.display = '';
+  });
+}
+
+setupSearch('regularSearch','regularTable','regularClear');
+setupSearch('occasionalSearch','occasionalTable','occasionalClear');
+</script>
+</body>
+</html>

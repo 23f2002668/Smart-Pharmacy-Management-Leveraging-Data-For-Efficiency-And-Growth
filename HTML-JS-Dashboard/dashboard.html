@@ -1,1 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #Background {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: space-evenly;
+            flex-direction: column;
+            justify-content: top;
+            /* background-color: #A3B48C */
+        }
+
+        #Header {
+            width: 100%;
+            height: 10vh;
+            position: fixed;
+            z-index: 1000;
+            background-color: #007bff;
+            border-bottom: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #Logo {
+            color: white;
+            padding: 0rem 0rem 0rem 1rem;
+            font-size: 1.75rem;
+            font-weight: 550;
+            font-family: 'Courier New';
+        }
+
+        #Header-Links {
+            width: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            color: white;
+            font-size: 1.35rem;
+            font-family: 'Courier New';
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            margin-right: 3%;
+
+        }
+    </style>
+</head>
+<body>
+
+    <div id="Background">
+        <div id="Header">
+            <div id="Logo">
+                Janta Pharmacy Store
+            </div>
+
+            <div id="Header-Links">
+                <a href="dashboard.html"> Dashboard </a>
+                <a href="billing.html"> Billing </a>
+                <a href="accounts.html"> Accounts </a>
+                <a href="stock.html"> Stock </a>
+                <a href="customers.html"> Customers </a>
+                <a href="alerts.html"> Alerts </a>
+              </div>
+        </div>
+
+
+        <div class="row text-center mb-4" style="width: 96%; margin: 8% 2% 0% 2%;">
+            <div class="col-md-3"><div class="card shadow-sm p-3" style="color: White; background-color: #3578D1;"><h5>Total Revenue</h5><h3>₹4,04,306.47</h3></div></div>
+            <div class="col-md-3"><div class="card shadow-sm p-3" style="color: White; background-color: #F29F67;"><h5>Avg Daily Revenue</h5><h3>₹9,626.34</h3></div></div>
+            <div class="col-md-3"><div class="card shadow-sm p-3" style="color: White; background-color: #34B1AA;"><h5>Total Customers</h5><h3>1122</h3></div></div>
+            <div class="col-md-3"><div class="card shadow-sm p-3" style="color: White; background-color: #F3797E;"><h5>Avg Daily Visits</h5><h3>27</h3></div></div>
+        </div>
+
+        <!-- ======= DAILY TREND ======= -->
+        <div class="card shadow-sm mb-4" style="width: 95%; margin: 2% 2.5% 0% 2.5%;">
+            <div class="card-body">
+                <h4 class="card-title" style="color: #0466c8;">Daily Revenue Trend</h4>
+                <div class="chart-container">
+                  <canvas id="dailyRevenueChart" style="width: 60%; height: 30vh;"></canvas>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <!-- ======= WEEKLY TREND ======= -->
+          <div class="card shadow-sm mb-4" style="width: 95%; margin: 0% 2.5% 0% 2.5%;">
+            <div class="card-body">
+              <h4 class="card-title" style="color: #0466c8;">Weekly Customers & Revenue</h4>
+              <div class="chart-container">
+                <canvas id="weeklyTrendChart" style="width: 60%; height: 30vh;"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- ======= CATEGORY REVENUE ======= -->
+          <div class="card shadow-sm mb-4" style="width: 95%; margin: 5% 2.5% 0% 2.5%;">
+            <div class="card-body">
+              <h4 class="card-title" style="color: #0466c8;">Category-wise Revenue Share</h4>
+              <div class="chart-container" style="position: relative; width: 100%; height: 50vh;">
+                <canvas id="categoryChart" style="height: 30vh; margin-top: auto; margin-bottom: auto; margin-left: auto; margin-right: auto;"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- ======= ABC CLASSIFICATION ======= -->
+          <div class="card shadow-sm mb-4" style="width: 95%; height: 90%; margin: 5% 2.5% 0% 2.5%;">
+            <div class="card-body">
+              <h4 class="card-title" style="color: #0466c8;">ABC Classification (Revenue Contribution)</h4>
+              <div class="chart-container" style="position: relative; width: 100%; height: 50vh;">
+                <canvas id="abcChart" style="height: 50vh; margin-top: auto; margin-bottom: auto; margin-left: auto; margin-right: auto;"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- ======= CORRELATION ======= -->
+            <div class="card shadow-sm mb-4" style="width: 95%; margin: 5% 2.5% 0% 2.5%;">
+              <div class="card-body">
+                <h4 class="card-title" style="color: #0466c8;">Correlation Analysis</h4>
+                <table class="table table-bordered text-center align-middle mb-4" style="border-collapse: collapse;">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Metric Pair</th>
+                      <th>Correlation (r)</th>
+                      <th>Interpretation</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Price vs Sales</td><td>0.037</td><td>Very weak positive correlation</td></tr>
+                    <tr><td>Regular Customers vs Revenue</td><td>0.137</td><td>Slight positive relation</td></tr>
+                    <tr><td>Occasional Customers vs Revenue</td><td>0.162</td><td>Weak positive relation</td></tr>
+                  </tbody>
+                </table>
+
+                <div class="chart-container" style="position: relative; width: 100%; height: 40vh;">
+                  <canvas id="correlationChart" style="height: 50vh; margin-top: auto; margin-bottom: auto; margin-left: auto; margin-right: auto;"></canvas>
+                </div>
+              </div>
+            </div>
+    <!-- ======= FOOTER ======= -->
+    <footer class="text-center text-white mt-5" style="background-color: #007bff; padding: 20px 0; border-top: 2px solid white;">
+      <div class="container">
+        <h6 style="font-family: 'Courier New'; font-weight: 500;">BDM Project of Pharmacy Store</h6>
+        <p style="margin: 5px 0;">Developed by <strong>Shahzada Moon</strong></p>
+        <p style="font-size: 0.9rem; opacity: 0.85;">© 2025 Janta Pharmacy Store | All Rights Reserved</p>
+      </div>
+    </footer>
+</body>
+
+    <script>
+        const ctx = document.getElementById('dailyRevenueChart').getContext('2d');
+
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: [
+              "5/15/2025","5/16/2025","5/17/2025","5/18/2025","5/19/2025","5/20/2025","5/21/2025",
+              "5/22/2025","5/23/2025","5/24/2025","5/25/2025","5/26/2025","5/27/2025","5/28/2025",
+              "5/29/2025","5/30/2025","5/31/2025","01-06-2025","02-06-2025","03-06-2025","04-06-2025",
+              "05-06-2025","06-06-2025","07-06-2025","08-06-2025","09-06-2025","10-06-2025","11-06-2025",
+              "12-06-2025","13-06-2025","6/14/2025","6/15/2025","6/16/2025","6/17/2025","6/18/2025",
+              "6/19/2025","6/20/2025","6/21/2025","6/22/2025","6/23/2025","6/24/2025","6/25/2025"
+            ],
+            datasets: [{
+              label: 'Total Revenue (₹)',
+              data: [
+                8962.06,14862.81,6402.50,12165.48,7463.32,9167.52,12088.07,9852.15,6267.18,2572.24,
+                11065.31,9824.82,11278.30,6522.36,10686.56,13145.09,4781.55,11827.93,7116.57,6933.92,
+                37813.74,9577.66,8603.97,6014.55,9102.56,7319.23,11962.39,13518.62,9487.95,7073.55,
+                2102.17,7602.89,9614.65,13935.66,8289.61,12642.86,9039.58,4573.19,6422.63,8614.07,
+                7576.43,10432.78
+              ],
+              borderColor: '#007bff',
+              backgroundColor: 'rgba(0, 123, 255, 0.2)',
+              borderWidth: 2,
+              tension: 0.3,
+              fill: true,
+              pointRadius: 3,
+              pointBackgroundColor: '#007bff'
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: 'Date'
+                },
+                ticks: { maxRotation: 90, minRotation: 45 }
+              },
+              y: {
+                title: {
+                  display: true,
+                  text: 'Revenue (₹)'
+                },
+                beginAtZero: true
+              }
+            },
+            plugins: {
+              legend: {
+                display: true,
+                labels: { color: '#333' }
+              },
+              title: {
+                display: false
+              },
+              tooltip: {
+                mode: 'index',
+                intersect: false
+              }
+            }
+          }
+        });
+
+        const ctxWeekly = document.getElementById('weeklyTrendChart').getContext('2d');
+
+        new Chart(ctxWeekly, {
+          type: 'bar',
+          data: {
+            labels: ["Week-1", "Week-2", "Week-3", "Week-4", "Week-5", "Week-6"],
+            datasets: [
+              {
+                label: "Total Revenue (₹)",
+                data: [71111.75, 57382.35, 92305.36, 66098.97, 58106.48, 59301.55],
+                backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                borderColor: '#007bff',
+                borderWidth: 2,
+                yAxisID: 'y',
+                order: 1
+              },
+              {
+                label: "% Contribution",
+                data: [17.59, 14.19, 22.83, 16.35, 14.37, 14.67],
+                type: 'line',
+                borderColor: '#28a745',
+                backgroundColor: 'rgba(40, 167, 69, 0.2)',
+                borderWidth: 2,
+                pointRadius: 4,
+                pointBackgroundColor: '#28a745',
+                tension: 0.3,
+                yAxisID: 'y1',
+                order: 0
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: 'Week'
+                }
+              },
+              y: {
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: 'Total Revenue (₹)'
+                },
+                grid: {
+                  drawOnChartArea: true
+                }
+              },
+              y1: {
+                beginAtZero: true,
+                position: 'right',
+                title: {
+                  display: true,
+                  text: '% Contribution'
+                },
+                grid: {
+                  drawOnChartArea: false
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: 'top'
+              },
+              tooltip: {
+                mode: 'index',
+                intersect: false,
+                callbacks: {
+                  label: function(context) {
+                    if (context.dataset.label === "Total Revenue (₹)") {
+                      return "₹ " + context.parsed.y.toLocaleString();
+                    } else {
+                      return context.parsed.y + "%";
+                    }
+                  }
+                }
+              }
+            }
+          }
+        });
+
+        const ctxCategory = document.getElementById('categoryChart').getContext('2d');
+
+        new Chart(ctxCategory, {
+          type: 'doughnut',
+          data: {
+            labels: [
+              "NSAID-AAD",
+              "NSAID-PAD",
+              "AAD-SAD",
+              "AAD-PAD",
+              "PD-AD",
+              "PD-HSD",
+              "DOAD",
+              "VMS",
+              "AD",
+              "SHP"
+            ],
+            datasets: [{
+              label: "Revenue (₹)",
+              data: [
+                34307.57,
+                20860.03,
+                49733.19,
+                14545.24,
+                18027.76,
+                9645.12,
+                48351.88,
+                10112.46,
+                54044.62,
+                144678.60
+              ],
+              backgroundColor: [
+                "#007bff",
+                "#6610f2",
+                "#6f42c1",
+                "#e83e8c",
+                "#dc3545",
+                "#fd7e14",
+                "#ffc107",
+                "#28a745",
+                "#20c997",
+                "#17a2b8"
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: 'right',
+                labels: {
+                  boxWidth: 15,
+                  padding: 12
+                }
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    const total = context.chart._metasets[context.datasetIndex].total;
+                    const value = context.parsed;
+                    const percentage = ((value / total) * 100).toFixed(2);
+                    return `₹ ${value.toLocaleString()} (${percentage}%)`;
+                  }
+                }
+              },
+              title: {
+                display: true,
+                text: 'Medicine Category Revenue Share',
+                font: {
+                  size: 16
+                }
+              }
+            }
+          }
+        });
+
+        const ctxABC = document.getElementById('abcChart').getContext('2d');
+
+        new Chart(ctxABC, {
+          type: 'bar',
+          data: {
+            labels: ["A", "B", "C"],
+            datasets: [
+              {
+                label: "Revenue Contribution (₹)",
+                data: [323371.83, 59846.00, 21088.65],
+                backgroundColor: ["#007bff", "#ffc107", "#dc3545"],
+                borderRadius: 8,
+                yAxisID: 'y1'
+              },
+              {
+                label: "% of Revenue",
+                data: [79.98, 14.80, 5.22],
+                backgroundColor: ["rgba(0, 123, 255, 0.3)", "rgba(255, 193, 7, 0.3)", "rgba(220, 53, 69, 0.3)"],
+                type: 'line',
+                borderColor: "#28a745",
+                borderWidth: 2,
+                tension: 0.4,
+                yAxisID: 'y2'
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y1: {
+                beginAtZero: true,
+                position: 'left',
+                title: {
+                  display: true,
+                  text: 'Revenue (₹)'
+                },
+                ticks: {
+                  callback: function(value) {
+                    return '₹' + value.toLocaleString();
+                  }
+                }
+              },
+              y2: {
+                beginAtZero: true,
+                position: 'right',
+                title: {
+                  display: true,
+                  text: '% of Revenue'
+                },
+                grid: {
+                  drawOnChartArea: false
+                },
+                ticks: {
+                  callback: function(value) {
+                    return value + '%';
+                  }
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                position: 'bottom',
+                labels: {
+                  boxWidth: 15,
+                  padding: 10
+                }
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    if (context.dataset.label.includes('%')) {
+                      return context.parsed.y + '%';
+                    } else {
+                      return '₹ ' + context.parsed.y.toLocaleString();
+                    }
+                  }
+                }
+              },
+              title: {
+                display: true,
+                text: 'ABC Classification – Revenue Contribution by Category',
+                font: {
+                  size: 16
+                }
+              }
+            }
+          }
+        });
+
+        const ctxCorr = document.getElementById('correlationChart').getContext('2d');
+
+        new Chart(ctxCorr, {
+          type: 'bar',
+          data: {
+            labels: [
+              "Price vs Sales",
+              "Regular Customers vs Revenue",
+              "Occasional Customers vs Revenue"
+            ],
+            datasets: [{
+              label: 'Correlation Coefficient (r)',
+              data: [0.037, 0.137, 0.162],
+              backgroundColor: ["#6c757d", "#198754", "#0d6efd"],
+              borderRadius: 8
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true,
+                max: 1,
+                title: {
+                  display: true,
+                  text: "Correlation Coefficient (r)"
+                },
+                ticks: {
+                  callback: function(value) {
+                    return value.toFixed(2);
+                  }
+                }
+              }
+            },
+            plugins: {
+              legend: { display: false },
+              title: {
+                display: true,
+                text: "Correlation Strength Across Key Metrics",
+                font: { size: 16 }
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    return 'r = ' + context.parsed.y.toFixed(3);
+                  }
+                }
+              }
+            }
+          }
+        });
+    </script>
+
+</html>

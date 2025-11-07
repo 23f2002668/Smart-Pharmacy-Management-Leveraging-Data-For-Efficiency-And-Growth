@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Billing | Smart Pharmacy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+      * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #Background {
+            width: 100%;
+            min-height: 77.5vh;
+            display: flex;
+            align-items: space-evenly;
+            flex-direction: column;
+            justify-content: top;
+            /* background-color: #A3B48C */
+        }
+
+        #Header {
+            width: 100%;
+            height: 10vh;
+            position: fixed;
+            z-index: 1000;
+            background-color: #007bff;
+            border-bottom: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #Logo {
+            color: white;
+            padding: 0rem 0rem 0rem 1rem;
+            font-size: 1.75rem;
+            font-weight: 550;
+            font-family: 'Courier New';
+        }
+
+        #Header-Links {
+            width: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            color: white;
+            font-size: 1.35rem;
+            font-family: 'Courier New';
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            margin-right: 3%;
+
+        }
+  </style>
+</head>
+<body>
+<div id="Background">
+    <div id="Header">
+        <div id="Logo">
+            Janta Pharmacy Store
+        </div>
+
+        <div id="Header-Links">
+            <a href="dashboard.html"> Dashboard </a>
+            <a href="billing.html"> Billing </a>
+            <a href="accounts.html"> Accounts </a>
+            <a href="stock.html"> Stock </a>
+            <a href="customers.html"> Customers </a>
+            <a href="alerts.html"> Alerts </a>
+        </div>
+    </div>
+    <div class="container" style="margin-top: 12vh;">
+        <h3 class="mb-3 text-primary">Billing Page</h3>
+        <p class="text-muted">Enter new sale transactions here.</p>
+
+        <form class="border p-4 rounded bg-light" id="billingForm">
+            <div id="medicineContainer">
+                <div class="medicine-group border rounded p-3 mb-3 bg-white">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Medicine Name</label>
+                            <select class="form-control">
+                                <option value="">-- Select Medicine --</option>
+                                <option>Voveran</option>
+                                <option>Diclogesic</option>
+                                <option>Diclomol</option>
+                                <option>Zerodol-P Tablet</option>
+                                <option>Hifenac</option>
+                                <option>Zerodol</option>
+                                <option>Acemiz</option>
+                                <option>Zerodol CR</option>
+                                <option>Dolokind</option>
+                                <option>Topnac</option>
+                                <option>Acenac</option>
+                                <option>Acenac SR</option>
+                                <option>Nilitis</option>
+                                <option>Nabuflam</option>
+                                <option>Brufen</option>
+                                <option>Ibugesic</option>
+                                <option>Combiflam</option>
+                                <option>Naprosyn</option>
+                                <option>Napra-D</option>
+                                <option>Proxen</option>
+                                <option>Ketoflam</option>
+                                <option>Feburic-K</option>
+                                <option>Ibugesic Plus</option>
+                                <option>Dexorill SR</option>
+                                <option>Disprin</option>
+                                <option>Ecosprin 75</option>
+                                <option>Ecosprin 325</option>
+                                <option>Dologel</option>
+                                <option>Orahelp</option>
+                                <option>Zytee RB</option>
+                                <option>Moov</option>
+                                <option>Iodex</option>
+                                <option>Bengay (Jar)</option>
+                                <option>Saridon Tablet</option>
+                                <option>Crocin</option>
+                                <option>Calpol</option>
+                                <option>Dolo 650</option>
+                                <option>T-98</option>
+                                <option>Metacin</option>
+                                <option>Pacimol</option>
+                                <option>Paracip</option>
+                                <option>Sumo</option>
+                                <option>Sumo L</option>
+                                <option>P-650</option>
+                                <option>Panadol</option>
+                                <option>PCM</option>
+                                <option>Metacin Forte</option>
+                                <option>Crocin Advance</option>
+                                <option>Sinarest</option>
+                                <option>Grilinctus</option>
+                                <option>Corex</option>
+                                <option>Ascoril</option>
+                                <option>Benadryl</option>
+                                <option>TusQ</option>
+                                <option>Ambrodil</option>
+                                <option>Expectorant</option>
+                                <option>Cofsils</option>
+                                <option>Honitus</option>
+                                <option>Cheston Cold</option>
+                                <option>Actifed</option>
+                                <option>Nasivion</option>
+                                <option>Otrivin</option>
+                                <option>Fluticone</option>
+                                <option>Betadine</option>
+                                <option>Dettol</option>
+                                <option>Savlon</option>
+                                <option>BoroPlus</option>
+                                <option>BoroPlus Antiseptic</option>
+                                <option>Boroline</option>
+                                <option>Neosporin</option>
+                                <option>Soframycin</option>
+                                <option>Burnol</option>
+                                <option>Lacto Calamine</option>
+                                <option>Caladryl</option>
+                                <option>Avil</option>
+                                <option>Citrazine</option>
+                                <option>Allegra</option>
+                                <option>Telekast</option>
+                                <option>Okacet</option>
+                                <option>Levocet</option>
+                                <option>Montair-LC</option>
+                                <option>Sinarest-AF</option>
+                                <option>Monticope</option>
+                                <option>Roxid</option>
+                                <option>Azithral</option>
+                                <option>Azithromycin</option>
+                                <option>Zithrox</option>
+                                <option>Taxim-O</option>
+                                <option>Cefixime</option>
+                                <option>Augmentin</option>
+                                <option>Amoxicillin</option>
+                                <option>Amoxyclav</option>
+                                <option>Ciplox</option>
+                                <option>Oflox</option>
+                                <option>Levoflox</option>
+                                <option>Norflox</option>
+                                <option>Flagyl</option>
+                                <option>Metrogyl</option>
+                                <option>Tiniba</option>
+                                <option>Secnidazole</option>
+                                <option>Rantac</option>
+                                <option>Aciloc</option>
+                                <option>Omeprazole</option>
+                                <option>Pantocid</option>
+                                <option>Pantoprazole</option>
+                                <option>Rabicip</option>
+                                <option>Rabeprazole</option>
+                                <option>Esomac</option>
+                                <option>Esomeprazole</option>
+                                <option>Lansoprazole</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Quantity</label>
+                            <input type="number" class="form-control" placeholder="Enter quantity">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Price per Unit (₹)</label>
+                            <input type="number" class="form-control" step="0.01">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <button type="button" id="addMoreBtn" class="btn btn-outline-primary">+ Add More</button>
+                <button class="btn btn-success">Generate Bill</button>
+            </div>
+        </form>
+    </div>
+</div>
+    <!-- ======= FOOTER ======= -->
+    <footer class="text-center text-white mt-5" style="background-color: #007bff; padding: 20px 0; border-top: 2px solid white;">
+      <div class="container">
+        <h6 style="font-family: 'Courier New'; font-weight: 500;">BDM Project of Pharmacy Store</h6>
+        <p style="margin: 5px 0;">Developed by <strong>Shahzada Moon</strong></p>
+        <p style="font-size: 0.9rem; opacity: 0.85;">© 2025 Janta Pharmacy Store | All Rights Reserved</p>
+      </div>
+    </footer>
+    <script>
+      document.getElementById('addMoreBtn').addEventListener('click', function() {
+          const container = document.getElementById('medicineContainer');
+          const firstGroup = container.querySelector('.medicine-group');
+          const newGroup = firstGroup.cloneNode(true);
+
+          // Clear input fields in the cloned group
+          newGroup.querySelectorAll('input').forEach(input => input.value = '');
+          newGroup.querySelector('select').selectedIndex = 0;
+
+          container.appendChild(newGroup);
+      });
+    </script>
+</body>
+</html>
